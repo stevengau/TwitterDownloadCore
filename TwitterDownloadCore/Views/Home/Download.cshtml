@@ -1,0 +1,50 @@
+﻿@model List<VideoResultViewModel>
+@{
+    ViewData["Title"] = "Twitter Video Download";
+}
+@section MetaTags
+    {
+    <link rel="alternate" href="http://www.twittervideodownloads.com/zh/" hreflang="zh-Hans" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:title" content="Download Twitter Videos - the best way to download Twitter videos" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="http://www.twittervideodownloads.com" />
+    <meta property="og:site_name" content="Download Twitter Videos to MP4 & MP3! Online Easy and Free" />
+    <meta name="description" content="Download Twitter Videos - Online, Easy and Free Online Twitter Video Downloader! Save any Twitter video  to MP3, MP4 and HD. Download Twitter Videos Online for free without Java or any 3rd party extensions. Your answer for how to download Twitter Video" />
+    <meta name="keywords" content="Download Twitter Videos, Download Videos to mp3, Download Videos to mp4, Download to mp3, Download to mp4,Twitter Downloader, Twitter Video Downloader" />
+
+}
+<div class="row">
+    <div class="col-md-12" style="text-align:center">
+        <h1 class="section-heading wow fadeInUp" style="font-family:Georgia;font-weight:bold">Video Downloader</h1>
+        <p class="section-desc wow fadeInUp">Download Videos from Twitter - Online Downloader</p>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table table-hover" style="width:50%;margin: 0px auto;">
+        <thead>
+            <tr>
+                <th>Quality</th>
+                <th>File Type</th>
+                <th>Downloads</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Resolution</td>
+                    <td>@item.Quality</td>
+                    <td><a download="" href="https://@item.HrefAttribute" target="_blank"><strong>Download</strong></a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="row" style="padding-top:40px;text-align:center;font-size:36px;color:darkblue">
+    <a href="/" class="btn btn-lg btn-success text-center">
+        More Download
+    </a>
+</div>

@@ -1,0 +1,50 @@
+﻿@model List<VideoResultViewModel>
+@{
+    ViewData["Title"] = "Twitter Video Download";
+}
+@section MetaTags
+    {
+    <link rel="alternate" href="http://www.twittervideodownloads.com/" hreflang="en" />
+    <meta property="og:locale" content="zh=Hans" />
+    <meta property="og:title" content="下载Twitter视频 - 下载Twitter视频的最佳方式" />
+    <meta property="og:type" content="产品" />
+    <meta property="og:url" content="http://www.twittervideodownloads.com/zh" />
+    <meta property="og:site_name" content="将Twitter视频下载到MP4和MP3！ 在线轻松自由" />
+    <meta name="description" content="下载Twitter视频 - 在线，简单和免费在线Twitter视频下载！ 将任何Twitter视频保存为MP3，MP4和HD。 免费下载Twitter视频在线，无需Java或任何第三方扩展。 您对如何下载Twitter视频的答案" />
+    <meta name="keywords" content="下载Twitter视频，下载视频到mp3，下载视频到mp4，下载到MP3，下载到MP4，Twitter下载器，Twitter视频下载" />
+
+}
+<div class="row">
+    <div class="col-md-12" style="text-align:center">
+        <h1 class="section-heading wow fadeInUp" style="font-family:Georgia;font-weight:bold">下载Twitter视频</h1>
+        <p class="section-desc wow fadeInUp">从Twitter下载视频 - 在线下载器</p>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table table-hover" style="width:50%;margin: 0px auto;">
+        <thead>
+            <tr>
+                <th>质量</th>
+                <th>文件类型</th>
+                <th>下载</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Resolution</td>
+                    <td>@item.Quality</td>
+                    <td><a download="" href="https://@item.HrefAttribute" target="_blank"><strong>Download</strong></a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="row" style="padding-top:40px;text-align:center;font-size:36px;color:darkblue">
+    <a href="/zh" class="btn btn-lg btn-success text-center">
+        更多下载
+    </a>
+</div>
