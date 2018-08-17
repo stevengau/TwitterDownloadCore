@@ -327,3 +327,12 @@ body {
         color: #fff; /* active text color */
         background-color: #a94442; /* active bg color */
     }
+
+.stole {
+    color: #8a6d3b;
+    border-bottom-color: transparent;
+    margin-left: 2px;
+    color: #a94442;
+    background-color: #999;
+    border-color: transparent;
+}
