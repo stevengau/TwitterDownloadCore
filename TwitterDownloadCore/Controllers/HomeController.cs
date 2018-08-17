@@ -42,6 +42,7 @@ namespace TwitterDownloadCore.Controllers
                 viewModel = StaticHttp.ParserFromTwdown(resultContent);
                 if (viewModel.Count == 0)
                 {
+                    
                     _logger.LogError("Result not Found Error: {1} : {0}", resultContent, DateTime.Now);
                     System.Threading.Thread.Sleep(2000);
                     return TryMore(url, counter++).Result;
@@ -98,6 +99,7 @@ namespace TwitterDownloadCore.Controllers
                     var result = await client.PostAsync("https://twdown.net/download.php", content);
                     string resultContent = await result.Content.ReadAsStringAsync();
                     //_logger.LogInformation(resultContent);
+                    viewModel = StaticHttp.ParserFromTwdown(resultContent);
                     if (viewModel.Count == 0)
                     {
                         _logger.LogError("Result not Found Error: {1} : {0}", resultContent, DateTime.Now);
@@ -108,7 +110,7 @@ namespace TwitterDownloadCore.Controllers
                 }
 
 
-                return View("Download", viewModel);
+                return View("zhDownload", viewModel);
             }
             catch (Exception)
             {
