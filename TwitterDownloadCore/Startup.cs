@@ -43,7 +43,7 @@ namespace TwitterDownloadCore
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
-
+            app.UseAuthentication();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -79,7 +79,6 @@ namespace TwitterDownloadCore
                     "zh",
                     new { controller = "Home", action = "zh" });
             });
-        });
         }
     }
 }

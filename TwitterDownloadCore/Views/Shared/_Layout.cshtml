@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TwitterDownloadCore</title>
+    <title>@ViewData["Title"] - Twitter Video Downloader</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -13,11 +13,42 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </environment>
+    @RenderSection("MetaTags", required: false)
+
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        /* Wrapping element */
+        /* Set some basic padding to keep content from hitting the edges */
+        .body-content {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Carousel */
+        .carousel-caption p {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        /* Make .svg files in the carousel display properly in older browsers */
+        .carousel-inner .item img[src$=".svg"] {
+            width: 100%;
+        }
+
+        /* QR code generator */
+        #qrCode {
+            margin: 15px;
+        }
+    </style>
 </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+<body style="background-color:mintcream">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#003366">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,25 +57,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">TwitterDownloadCore</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="color:deepskyblue;font-size:24px">Download-Twitter-Videos</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="float:right">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a href="/zh" style="color:white;font-size:24px">中文</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!--<partial name="_CookieConsentPartial" />-->w
+    <!--<partial name="_CookieConsentPartial" />-->
 
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - TwitterDownloadCore</p>
+            <p>&copy; 2018 - twittervideodownloads.com</p>
         </footer>
     </div>
 
@@ -70,5 +99,15 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-10452566-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-10452566-3');
+    </script>
+
 </body>
 </html>
