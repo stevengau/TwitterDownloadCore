@@ -43,6 +43,8 @@ namespace TwitterDownloadCore.Controllers
                     string resultContent = await result.Content.ReadAsStringAsync();
                     //_logger.LogInformation(resultContent);
                     viewModel = StaticHttp.ParserFromTwdown(resultContent);
+                    if (viewModel.Count == 0)
+                        _logger.LogError("Result not Found Error: {1} : {0}", url, DateTime.Now);
                 }
 
 
@@ -50,7 +52,7 @@ namespace TwitterDownloadCore.Controllers
             }
             catch (Exception)
             {
-                _logger.LogError("HTTP TIMEOUT");
+                _logger.LogError("Http Error: {1} : {0}", url, DateTime.Now);
                 return View("Error");
             }
         }
@@ -69,15 +71,16 @@ namespace TwitterDownloadCore.Controllers
                     var result = await client.PostAsync("https://twdown.net/download.php", content);
                     string resultContent = await result.Content.ReadAsStringAsync();
                     //_logger.LogInformation(resultContent);
-                    viewModel = StaticHttp.ParserFromTwdown(resultContent);
+                    if (viewModel.Count == 0)
+                        _logger.LogError("Result not Found Error: {1} : {0}", url, DateTime.Now);
                 }
 
 
-                return View("zhDonwload", viewModel);
+                return View("Download", viewModel);
             }
             catch (Exception)
             {
-                _logger.LogError("HTTP TIMEOUT");
+                _logger.LogError("Http Error: {1} : {0}", url, DateTime.Now);
                 return View("Error");
             }
         }
