@@ -104,11 +104,11 @@ namespace TwitterDownloadCore.Controllers
 
             xml += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">";
             xml += "<url>";
-            xml += "<loc>http://localhost:4251/</loc>";
+            xml += "<loc>http://www.twittervideodownloads.com</loc>";
             xml += "<lastmod>" + DateTime.Now.ToString("yyyy-MM-dd") + "</lastmod>";
             xml += "</url>";
             xml += "<url>";
-            xml += "<loc>http://localhost:4251/zh</loc>";
+            xml += "<loc>http://www.twittervideodownloads.com/zh</loc>";
             xml += "<lastmod>" + DateTime.Now.ToString("yyyy-MM-dd") + "</lastmod>";
             xml += "</url>";
             xml += "</urlset>";
