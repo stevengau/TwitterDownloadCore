@@ -37,7 +37,7 @@ namespace TwitterDownloadCore.Helper
         {
             try
             {
-                string pat = @"href=""https:\/\/video.twimg.com\/amplify_video\S*";
+                string pat = @"href=""https:\/\/ video.twimg.com\S*";
                 string pat2 = @"<td>[0-9][0-9][0-9]x[0-9][0-9][0-9]<\/td>";
 
                 // Instantiate the regular expression object.
