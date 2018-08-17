@@ -28,6 +28,28 @@ namespace TwitterDownloadCore.Controllers
             return View("zh");
         }
 
+        public async Task<List<VideoResultViewModel>> TryMore(string url, int counter)
+        {
+            if (counter == 3) return new List<VideoResultViewModel>();
+            List<VideoResultViewModel> viewModel = new List<VideoResultViewModel>();
+            using (HttpClient client = new HttpClient())
+            {
+                var content = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>("URL", url) });
+                client.BaseAddress = new Uri("https://cors-anywhere.herokuapp.com/");
+                var result = await client.PostAsync("https://twdown.net/download.php", content);
+                string resultContent = await result.Content.ReadAsStringAsync();
+                //_logger.LogInformation(resultContent);
+                viewModel = StaticHttp.ParserFromTwdown(resultContent);
+                if (viewModel.Count == 0)
+                {
+                    _logger.LogError("Result not Found Error: {1} : {0}", resultContent, DateTime.Now);
+                    System.Threading.Thread.Sleep(2000);
+                    return TryMore(url, counter++).Result;
+                }
+            }
+            return viewModel;
+        }
+
         [HttpPost]
         public async Task<IActionResult> Download(string url)
         {
@@ -44,7 +66,12 @@ namespace TwitterDownloadCore.Controllers
                     //_logger.LogInformation(resultContent);
                     viewModel = StaticHttp.ParserFromTwdown(resultContent);
                     if (viewModel.Count == 0)
+                    {
                         _logger.LogError("Result not Found Error: {1} : {0}", resultContent, DateTime.Now);
+                        System.Threading.Thread.Sleep(2000);
+                        viewModel = TryMore(url, 0).Result;
+
+                    }
                 }
 
 
@@ -72,7 +99,12 @@ namespace TwitterDownloadCore.Controllers
                     string resultContent = await result.Content.ReadAsStringAsync();
                     //_logger.LogInformation(resultContent);
                     if (viewModel.Count == 0)
+                    {
                         _logger.LogError("Result not Found Error: {1} : {0}", resultContent, DateTime.Now);
+                        System.Threading.Thread.Sleep(2000);
+                        viewModel = TryMore(url, 0).Result;
+                    }
+                        
                 }
 
 
