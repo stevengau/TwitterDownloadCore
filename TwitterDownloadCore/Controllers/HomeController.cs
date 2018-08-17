@@ -44,7 +44,7 @@ namespace TwitterDownloadCore.Controllers
                     //_logger.LogInformation(resultContent);
                     viewModel = StaticHttp.ParserFromTwdown(resultContent);
                     if (viewModel.Count == 0)
-                        _logger.LogError("Result not Found Error: {1} : {0}", url, DateTime.Now);
+                        _logger.LogError("Result not Found Error: {1} : {0}", resultContent, DateTime.Now);
                 }
 
 
@@ -72,7 +72,7 @@ namespace TwitterDownloadCore.Controllers
                     string resultContent = await result.Content.ReadAsStringAsync();
                     //_logger.LogInformation(resultContent);
                     if (viewModel.Count == 0)
-                        _logger.LogError("Result not Found Error: {1} : {0}", url, DateTime.Now);
+                        _logger.LogError("Result not Found Error: {1} : {0}", resultContent, DateTime.Now);
                 }
 
 
