@@ -108,6 +108,17 @@
 
         gtag('config', 'UA-10452566-3');
     </script>
-
+    <script>
+        $("#example-tabs").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            enableFinishButton: false,
+            enablePagination: false,
+            enableAllSteps: true,
+            titleTemplate: "#title#",
+            cssClass: "tabcontrol"
+        });
+    </script>
 </body>
 </html>
