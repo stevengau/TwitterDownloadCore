@@ -51,10 +51,49 @@ namespace TwitterDownloadCore.Controllers
             return viewModel;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Download(string url)
+        //[HttpPost]
+        //public async Task<IActionResult> Download(string url)
+        //{
+        //    List<VideoResultViewModel> viewModel = new List<VideoResultViewModel>();
+        //    try
+        //    {
+        //        var content = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>("URL", url) });
+
+        //        using (HttpClient client = new HttpClient())
+        //        {
+        //            client.BaseAddress = new Uri("https://cors-anywhere.herokuapp.com/");
+        //            var result = await client.PostAsync("https://twdown.net/download.php", content);
+        //            string resultContent = await result.Content.ReadAsStringAsync();
+        //            //_logger.LogInformation(resultContent);
+        //            viewModel = StaticHttp.ParserFromTwdown(resultContent);
+        //            if (viewModel.Count == 0)
+        //            {
+        //                _logger.LogError("Result not Found Error: {1} : {0}", resultContent, DateTime.Now);
+        //                System.Threading.Thread.Sleep(2000);
+        //                viewModel = TryMore(url, 0).Result;
+
+        //            }
+        //        }
+
+
+        //        return View("Download", viewModel);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        _logger.LogError("Http Error: {1} : {0}", url, DateTime.Now);
+        //        return View("Error");
+        //    }
+        //}
+
+
+        [HttpGet]
+        public async Task<IActionResult> Download(string id)
         {
             List<VideoResultViewModel> viewModel = new List<VideoResultViewModel>();
+
+            var base64EncodedBytes = System.Convert.FromBase64String(id);
+
+            string url = System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
             try
             {
                 var content = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>("URL", url) });
@@ -85,10 +124,14 @@ namespace TwitterDownloadCore.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> zhDownload(string url)
+
+        [HttpGet]
+        public async Task<IActionResult> zhDownload(string id)
         {
             List<VideoResultViewModel> viewModel = new List<VideoResultViewModel>();
+            var base64EncodedBytes = System.Convert.FromBase64String(id);
+
+            string url = System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
             try
             {
                 var content = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>("URL", url) });

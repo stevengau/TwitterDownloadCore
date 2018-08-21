@@ -31,14 +31,27 @@
         </div>
         <div class="form-group">
             <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-lg btn-success text-center">
+                <button type="button" class="btn btn-lg btn-success text-center" onclick="base64()">
                     下载
                 </button>
             </div>
         </div>
     </form>
 </div>
-
+<script>
+function base64(){
+if (!$('form')[0].checkValidity()) {
+   alert('Please input twitter url, example: https://twitter.com/i/status/1030520553889837057');
+}
+else
+{
+	console.log(Base64.encode($('#url').val()));
+	window.location.href = "/zhDownload/" + Base64.encode($('#url').val());
+}
+	
+}
+   
+</script>
 
 <div class="row" style="padding-top:40px;text-align:center;font-size:36px;color:darkblue">
     如何下载Twitter视频？

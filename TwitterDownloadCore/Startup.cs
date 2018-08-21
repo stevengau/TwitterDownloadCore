@@ -68,12 +68,12 @@ namespace TwitterDownloadCore
 
                 routes.MapRoute(
                     "HomeActions",
-                    "Download",
+                    "Download/{id}",
                     new { controller = "Home", action = "Download" });
 
                 routes.MapRoute(
                     "HomeActions2",
-                    "zhDownload",
+                    "zhDownload/{id}",
                     new { controller = "Home", action = "zhDownload" });
 
                 routes.MapRoute(
